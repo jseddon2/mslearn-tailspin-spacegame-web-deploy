@@ -136,12 +136,13 @@ stages:
               slotName: 'swap'
               appName: '$(WebAppNameStaging)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
-          - task: AzureAppServiceManage@0
-            displayName: 'Swap deployment slots'
-            inputs:
-              azureSubscription: 'Resource Manager - Tailspin - Space Game - Staging'
-              resourceGroupName: 'tailspin-space-game-rg'
-              webAppName: '$(WebAppNameStaging)'
-              sourceSlot: 'swap'
-              targetSlot: 'production'
-              action: 'Swap Slots'
+          # Can't use swap slots with publish profiles
+          #- task: AzureAppServiceManage@0
+            #displayName: 'Swap deployment slots'
+            #inputs:
+              #azureSubscription: 'Resource Manager - Tailspin - Space Game - Staging'
+              #resourceGroupName: 'tailspin-space-game-rg'
+              #webAppName: '$(WebAppNameStaging)'
+              #sourceSlot: 'swap'
+              #targetSlot: 'production'
+              #action: 'Swap Slots'
